@@ -1,4 +1,4 @@
-import tkinter as tk
+from tkinter import*
 from tkinter import messagebox
 from random import choice
 
@@ -30,19 +30,38 @@ def paper():
     else:
         messagebox.showinfo("Title", "The draw game, bot also chose 'paper'")
 
-window = tk.Tk()
+window = Tk()
+window.title("Rock, paper, scissors")
+window.geometry("600x400")
+window.resizable(width=False, height=False)
+window["bg"] = "gray"
 
-window.rowconfigure(0, minsize=100, weight=1)
-window.columnconfigure([0, 1, 2], minsize=100, weight=1)
+labelText = Label(window,
+                  text="Choose: rock, scissors or paper",
+                  fg="black",
+                  font=("Times New Roman", 20),
+                  bg="gray")
+labelText.place(x=140, y=30)
 
-btn_rock = tk.Button(master=window, text="Rock",
-                     bg="gray", fg="white", relief=tk.RIDGE, command=rock)
-btn_rock.grid(row=0, column=0, sticky="nsew")
-btn_cut = tk.Button(master=window, text="Scissors",
-                    bg="gray", fg="white", relief=tk.RIDGE, command=cut)
-btn_cut.grid(row=0, column=1, sticky="nsew")
-btn_paper = tk.Button(master=window, text="Paper",
-                    bg="gray", fg="white", relief=tk.RIDGE, command=paper)
-btn_paper.grid(row=0, column=2, sticky="nsew")
+rock_but = Button(window,
+              text="Rock",
+              font=("Comic Sans Ms", 25),
+              bg="gray",
+              command=rock)
+rock_but.place(x=40, y=200)
+
+cut_but = Button(window,
+                 text="Scissors",
+                 font=("Comic Sans Ms", 25),
+                 bg="gray",
+                 command=cut)
+cut_but.place(x=200, y=200)
+
+paper_but = Button(window,
+                   text="Paper",
+                   font=("Comic Sans Ms", 25),
+                   bg="gray",
+                   command=paper)
+paper_but.place(x=430, y=200)
 
 window.mainloop()
